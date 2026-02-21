@@ -1,0 +1,79 @@
+.sidebar-wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  padding: 14px 14px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.convo-list {
+  overflow: auto;
+  padding: 6px;
+}
+
+.convo-item {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.convo-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border);
+}
+
+.convo-item.active {
+  background: rgba(43, 100, 255, 0.14);
+  border-color: rgba(43, 100, 255, 0.25);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--panel2);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.convo-meta {
+  min-width: 0;
+}
+
+.convo-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.convo-sub {
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-empty {
+  padding: 18px 14px;
+}

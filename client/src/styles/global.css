@@ -1,0 +1,97 @@
+:root {
+  --bg: #0b0f19;
+  --panel: #121a2b;
+  --panel2: #0f1524;
+  --text: #eaf0ff;
+  --muted: #97a3bf;
+  --border: rgba(255, 255, 255, 0.08);
+  --btn: #2b64ff;
+  --btn2: rgba(255, 255, 255, 0.08);
+  --danger: #ff4d6d;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--text);
+}
+.muted {
+  color: var(--muted);
+}
+.tiny {
+  font-size: 12px;
+}
+
+.error {
+  background: rgba(255, 77, 109, 0.12);
+  border: 1px solid rgba(255, 77, 109, 0.35);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.btn {
+  background: var(--btn);
+  border: none;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(1.05);
+}
+
+.btn-ghost {
+  background: var(--btn2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-mini {
+  background: var(--btn2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  width: 100%;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 10px;
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  border-color: rgba(43, 100, 255, 0.6);
+}
