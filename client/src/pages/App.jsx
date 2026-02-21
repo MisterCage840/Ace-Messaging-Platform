@@ -39,6 +39,7 @@ export default function App() {
 
   useEffect(() => {
     ;(async () => {
+      if (!token) return
       try {
         await loadMe()
         await loadInbox()
@@ -48,7 +49,7 @@ export default function App() {
       }
     })()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [token])
 
   async function onLogout() {
     clearToken()
