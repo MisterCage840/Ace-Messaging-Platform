@@ -12,11 +12,30 @@ const app = express()
 app.use(morgan("dev"))
 app.use(express.json())
 
+function escapeRegex(text) {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+}
+
+function isAllowedOrigin(origin) {
+  for (const allowed of ENV.CORS_ORIGINS) {
+    if (!allowed.includes("*")) {
+      if (origin === allowed) return true
+      continue
+    }
+
+    const regexText = `^${allowed.split("*").map(escapeRegex).join(".*")}$`
+    const regex = new RegExp(regexText)
+    if (regex.test(origin)) return true
+  }
+
+  return false
+}
+
 app.use(
   cors({
     origin(origin, cb) {
       if (!origin) return cb(null, true)
-      if (ENV.CORS_ORIGINS.includes(origin)) return cb(null, true)
+      if (isAllowedOrigin(origin)) return cb(null, true)
       return cb(new Error(`Origin not allowed by CORS: ${origin}`))
     },
     methods: ["GET", "POST", "PATCH", "DELETE"],

@@ -5,6 +5,7 @@ function toOrigin(value) {
   if (!value) return null
   const trimmed = value.trim()
   if (!trimmed) return null
+  if (trimmed.includes("*")) return trimmed.replace(/\/+$/, "")
 
   try {
     const url = new URL(trimmed)
