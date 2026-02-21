@@ -14,7 +14,11 @@ app.use(express.json())
 
 app.use(
   cors({
-    origin: ENV.CORS_ORIGIN,
+    origin(origin, cb) {
+      if (!origin) return cb(null, true)
+      if (ENV.CORS_ORIGINS.includes(origin)) return cb(null, true)
+      return cb(new Error(`Origin not allowed by CORS: ${origin}`))
+    },
     methods: ["GET", "POST", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   }),

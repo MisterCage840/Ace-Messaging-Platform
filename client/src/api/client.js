@@ -1,4 +1,5 @@
-const API_URL = import.meta.env.VITE_API_URL
+const RAW_API_URL = import.meta.env.VITE_API_URL
+const API_URL = RAW_API_URL ? RAW_API_URL.replace(/\/+$/, "") : ""
 
 export function getToken() {
   return localStorage.getItem("ace_token")
@@ -13,9 +14,14 @@ export function clearToken() {
 }
 
 export async function api(path, options = {}) {
-  const token = getToken()
+  if (!API_URL) {
+    throw new Error("VITE_API_URL is not set")
+  }
 
-  const res = await fetch(`${API_URL}${path}`, {
+  const token = getToken()
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`
+
+  const res = await fetch(`${API_URL}${normalizedPath}`, {
     ...options,
     headers: {
       "Content-Type": "application/json",
